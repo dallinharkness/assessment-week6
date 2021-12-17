@@ -19,16 +19,19 @@ var rollbar = new Rollbar({
 app.get('/',function(req,res) {
     res.sendFile(path.join(__dirname, 'public/index.html'))
     rollbar.info('working successfully')
+    rollbar.log('everything is showing')
     
   })
 
 app.get('/styles',function(req,res) {
     res.sendFile(path.join(__dirname, 'public/index.css'))
+    rollbar.log('styles are working')
 })
 
 
 app.get('/js',function(req,res) {
     res.sendFile(path.join(__dirname, 'public/index.js'))
+    rollbar.critical('button is not working')
 })
 
 app.get('/api/robots', (req, res) => {
